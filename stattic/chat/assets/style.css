@@ -1,0 +1,120 @@
+
+/* ================= Right Side ============== */
+.user-details{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-details h4{
+    font-weight: 500;
+    line-height: 1.2rem;
+    margin-left: 15px;
+
+}
+
+.user-details h4 span{
+    font-size: .8rem;
+    color: #555;
+}
+
+.chatBx{
+    position: relative;
+    width: 100%;
+    height: calc(100% - 120px); /* 60 + 60 = 120px */
+    padding: 50px;
+    overflow-y: auto;
+}
+
+.chatBx .msg{
+    position: relative;
+    display: flex;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.chatBx .msg p{
+    position: relative;
+    right: 0;
+    text-align: right;
+    max-width: 65%;
+    padding: 12px;
+    background: #15a632;  
+    border-radius: 10px;
+    font-size: .9rem;
+}
+
+.chatBx .msg p::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    border-top: 10px  solid #15a632; 
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left: 10px  solid #15a632; 
+}
+
+.chatBx .msg p span{
+    display: block;
+    margin-top: 5px;
+    font-size: .85rem;
+    opacity: .5;
+}
+
+.chatBx .msg-me{
+    justify-content: flex-end;
+}
+
+.chatBx .msg-frnd{
+    justify-content: flex-start;
+}
+
+.chatBx .msg-frnd p{
+    background: #dfdfe6;
+    text-align: left;
+}
+
+.chatBx .msg-frnd p::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: unset;
+    left: -10px;
+    border-top: 10px  solid #dfdfe6; 
+    border-right: 10px solid #dfdfe6;
+    border-bottom: 10px solid transparent; 
+    border-left: 10px  solid transparent; 
+}
+
+.chat-input{
+    position: relative;
+    width: 100%;
+    height: 60px;
+    background: #f0f0f0;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-input ion-icon{
+    cursor: pointer;
+    font-size: 1.8rem;
+    color: #51585c;
+}
+.chat-input ion-icon:nth-child(1){
+    margin-right: 15px;
+}
+
+.chat-input input{
+    position: relative;
+    width: 90%;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    font-size: 1rem;
+}
