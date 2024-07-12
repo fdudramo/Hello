@@ -1,0 +1,60 @@
+	
+	<!-- alerts 
+    {% if messages %} 
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message|safe }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+     end alerts -->
+
+
+    <!-- alerts -->
+    {% if messages %} 
+            {% for message in messages %}
+
+                {% if message.tags == "safe success" %} 
+                <div class="alert alert-success alert-icon alert-dismissible" 
+                    style="position: fixed; z-index: 100000; top: 10px; right: 10px; width: 300px; color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6;">
+                    <strong>Success!</strong> 
+                    <div>{{ message|safe }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                {% elif message.tags == "safe error" %} 
+                <div class="alert alert-danger alert-icon alert-dismissible" 
+                    style="position: fixed; z-index: 100000; top: 10px; right: 10px; width: 300px;">
+                    <strong>error!</strong> 
+                    <div>{{ message|safe }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                {% elif message.tags == "safe info" %} 
+                <div class="alert alert-info alert-icon alert-dismissible" 
+                    style="position: fixed; z-index: 100000; top: 10px; right: 10px; width: 300px;">
+                    <strong>info!</strong> 
+                    <div>{{ message|safe }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+                {% elif message.tags == "safe warning" %} 
+                <div class="alert alert-warning alert-icon alert-dismissible" 
+                    style="position: fixed; z-index: 100000; top: 10px; right: 10px; width: 300px;">
+                    <strong>warning!</strong> 
+                    <div>{{ message|safe }}</div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
+
+
+            {% endfor %}
+    {% endif %}
+
+    <!-- end alerts -->
+
+
+
+
+

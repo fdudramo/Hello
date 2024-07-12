@@ -1,0 +1,62 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <title>Portal - Bootstrap 5 Admin Dashboard Template For Developers</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Portal - Bootstrap 5 Admin Dashboard Template For Developers">
+    <meta name="author" content="Xiaoying Riley at 3rd Wave Media">    
+    <link rel="shortcut icon" href="{% static 'app/assets/images/brain-logo-1.png' %}"> 
+    
+    <!-- FontAwesome JS-->
+    <script defer src="{% static 'app/assets/plugins/fontawesome/js/all.min.js' %}"></script>
+    
+    <!-- App CSS -->  
+    <link id="theme-style" rel="stylesheet" href="{% static 'app/assets/css/portal.css' %}">
+
+    <!-- chat  -->
+    <link rel="stylesheet" href="{% static 'chat/assets/style.css' %}">
+
+    <!-- js  -->
+    <script src="{% static 'app/assets/js/htmx.min.js' %}"></script>
+    <script src="{% static 'app/assets/js/ws.js' %}"></script>
+    <script src="{% static 'app/assets/js/hyperscript.min.js' %}"></script>  
+
+
+
+    <style type="text/css">
+    	::selection{
+    		background-color: #15a362;
+    		color: #fcfcfd;
+    	}
+    	
+    	.messagestry {
+		    position: fixed;
+		    top: 10px;
+		    right: 10px;
+		    width: 300px;
+		    z-index: 100000;
+		}
+
+		.alerttry {
+		    padding: 10px;
+		    margin-bottom: 10px;
+		    border: 1px solid transparent;
+		    border-radius: 4px;
+		}
+
+		.alerttry.successtry {
+		    color: #3c763d;
+		    background-color: #dff0d8;
+		    border-color: #d6e9c6;
+		} 
+    </style>
+
+</head> 

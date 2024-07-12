@@ -1,0 +1,18 @@
+
+                {% if message.author.username == 'pdfai' %}
+                <div class="msg msg-frnd">
+                    <p style="color: black">{{ message.body }}</p>
+                </div>
+
+                {% elif message.author == user %}
+                <div class="msg msg-me">
+                    <p style="color: white">{{ message.body }}</p>
+                </div>
+
+                {% else %}
+                <div class="msg msg-frnd">
+                    <p style="color: black">{{ message.body }}</p>
+                </div>
+				{% endif %}
+
+

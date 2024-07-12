@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="app-wrapper" style="background-color: #f0f8ff">
+    <div class="container-xl" style="padding: 0px 8px 0px 8px;">
+        <!-- ========= right side ========== -->
+        <div class="right-side" style="min-height: 730px">
+            <div class="chatBx" id="chat_messages" style="padding: 10px;">
+                {% for message in chat_messages %}
+                {% include 'chat/chat_message.html' %}
+                {% endfor %}
+            </div>
+
+<div style="position: fixed; bottom: 0">hello</div>
+            <div class="chat-input" 
+                    style="background-color: transparent; display: flex; flex-direction: row;">
+                <form id="chat_message_form" style="flex: 1; color: transparent; background: transparent;" 
+                        hx-ext="ws"
+                        ws-connect="/ws/chatroom/{{ chatroom_name }}"
+                        ws-send
+                        _="on htmx:wsAfterSend reset() me">
+                    {% csrf_token %}
+                    {{ chat_form }}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block header_search %}
+<div>
+    <p style="margin-bottom: 0px; text-align: center;">
+        you are chatting with {{ chat_file_name }} {{chat_file_path}}
+    </p>
+</div>
+{% endblock %}
+
+
+
+{% block javascript %}
+<script>
+
+    function scrollToBottom() {
+    window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        scrollToBottom(); // Ensure it scrolls to the bottom when the page loads
+    });
+
+    document.addEventListener('htmx:wsMessage', function(event) {
+        const data = JSON.parse(event.detail.data);
+        const chatMessages = document.getElementById('chat_messages');
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = data.html;
+        chatMessages.appendChild(tempDiv.firstChild);
+        scrollToBottom(); // Scroll to the bottom when a new message arrives
+    });
+
+
+
+</script>
+{% endblock %}
+
+
+
+

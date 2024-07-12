@@ -1,0 +1,20 @@
+{% load static %}
+
+
+{% include 'main-partials/head.html' %}
+{% include 'main-partials/messages.html' %}
+
+<div class="app-wrapper">
+	<div class="app-content pt-3 p-md-3 p-lg-4">
+		<div class="container-xl">
+
+			<h2>Upload a PDF File</h2>
+			<form method="post" enctype="multipart/form-data">
+			    {% csrf_token %}
+			    {{ form.as_p }}
+			    <button type="submit">Upload</button>
+			</form>
+
+		</div>
+	</div>
+</div>

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="app-wrapper" style="background-color: gray">
+    <div class="container-xl" style="padding: 0px 8px 0px 8px;">
+        <!-- ========= right side ========== -->
+        <div class="right-side">
+            <div class="chatBx" id="chat_messages" style="padding: 10px;">
+                {% for message in chat_messages %}
+                {% include 'chat/chat_message.html' %}
+                {% endfor %}
+            </div>
+
+            <div class="chat-input" style="background-color: transparent;">
+                <ion-icon name="happy-outline"></ion-icon>
+                <ion-icon name="attach-outline"></ion-icon>
+                <form id="chat_message_form" 
+                        hx-post="{% url 'app' %}"
+                        hx-target="#chat_messages"
+                        hx-swap="beforeend"
+                        _="on htmx:afterRequest reset() me">
+                    {% csrf_token %}
+                    {{ chat_form }}
+                </form>
+                <ion-icon name="mic-outline"></ion-icon>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block javascript %}
+<script>
+
+    function scrollToBottom(time=0) {
+        setTimeout(function() {
+            const container = document.getElementById('chat_messages');
+            container.scrollTop = container.scrollHeight;
+        }, time);
+    }
+    scrollToBottom()
+
+</script>
+{% endblock %}

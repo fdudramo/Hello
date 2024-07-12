@@ -1,0 +1,43 @@
+i want to delete a file from the database in django
+
+urls.py:
+path('delete_vector/<int:file_id>/', views.delete_vector_db, name='delete_vector_db'),
+
+views.py:
+the page that show all files:
+
+def docs(request):
+    files_objects= UploadedFile.objects.all()
+
+    return render(request, "docs.html", {'files_objects':files_objects}) 
+
+
+the delete view:
+
+@login_required
+def delete_vector_db(request, file_id):
+    try:
+        uploaded_file = UploadedFile.objects.get(id=file_id, user=request.user)
+
+        uploaded_file.delete()
+
+        messages.success(request, 'file deleted successfully!', extra_tags='safe')
+
+    except UploadedFile.DoesNotExist:
+        messages.error(request, 'File not found!', extra_tags='safe')
+
+    return redirect('docs')     
+
+
+the template just the button url that delete the file:
+docs.html:
+
+{% for obj in files_objects %}
+    <a class="dropdown-item" 
+       href="{% url 'delete_vector_db' obj.id %}">
+        <p>{{obj.id}}</p>
+{% endfor %}    
+
+
+
+the propleme is that when i delete a file its delete the last file that i add, niot the specifice file.
