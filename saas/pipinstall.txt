@@ -1,0 +1,16 @@
+cloudinary_storage
+cloudinary
+
+web: daphne saas.asgi:application -b 0.0.0.0 -p $PORT
+pip freeze > requirements.txt
+python manage.py collectstatic --noinput
+
+
+
+comment out:
+    #'cloudinary_storage',
+    #'cloudinary',
+
+
+comment:
+	ENVIRONMENT = "development"    
